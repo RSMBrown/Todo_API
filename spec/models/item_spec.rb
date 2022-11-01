@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'faker'
 
 RSpec.describe Item, type: :model do
   it { should belong_to(:todo) }
