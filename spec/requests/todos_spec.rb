@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Todos API', type: :request do
 
+    let(:user) {create(:user) }
     let!(:todos) { create_list(:todo, 10, created_by: user.id) }
     let(:todo_id) { todos.first.id }
     let(:headers) { valid_headers }
@@ -72,8 +73,7 @@ RSpec.describe 'Todos API', type: :request do
             end
 
             it 'returns a validation failure message' do
-                expect(json['message'])
-                .to match(/Validation failed: Title by can't be blank/)
+                expect(json['message']).to match(/Validation failed: Title can't be blank/)
             end
         end
     end
